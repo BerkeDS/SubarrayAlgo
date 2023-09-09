@@ -1,0 +1,11 @@
+{
+  "name": "sunsets",
+  "version": "1.0.0",
+  "description": "All Sub sets of an array",
+  "main": "SubArray.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BerkeDS",
+  "license": "ISC"
+}
