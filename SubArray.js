@@ -9,6 +9,8 @@
 const sabitAr = ['a','b','c',"g","f","e","j","k","z","x","v","b","n","m","ö","ç",".",",","1"]
 const sabitAr1 = ['a','b','c','d','e'];
 console.log(subArray(sabitAr1));
+console.log(JSON.stringify(subArray(sabitAr1), null, 2));
+
 //console.log(subSett(sabitAr));
 
 //#region ÇÖZÜM 1 Kendi bulduğum yöntem -- Alt kümeler arasındaki ilişkiden yararlanarak bulma
@@ -25,7 +27,7 @@ console.log(subArray(sabitAr1));
         .
         .
         n elemanlıya kadar
-        
+
         1 elemanlı alt küme oluşturarak başla
         2 elemanlı alt kümeleri bulurken kendinden önceki alt kümede(1 elemanlı) kendisinin bulunduğu elemanlar hariç diğer alt küme elemanlarını yanına ekliyor, örneğin a elemanı için konuşursak, 1 elemanlı kümede a hariç yani kendisi b,c,d var, bunları a ya eklersek ab,ac,ad olur, daha sonra 2. elemana geçilir ve b 1 elemanlı alt kümede kendinden sonraki tüm alt küme elemanlarını yanına ekler, bc,bd. bu şekilde son elemana kadar gider.
 
@@ -44,21 +46,21 @@ function subArray(arr) {
     subAr.push(sumAr);
     sumAr = [];
     //#endregion
-    
-    
+
+
     let altKumeEl=1;
     for (let l = 0; l < subAr[0].length-2; l++) {
         for (let i = 0; i < subAr[0].length-altKumeEl; i++) {
             let holder1 = 0;
             let holder2 = 0;
-            
+
             holder1 = subAr[0].length-(i+1);
-            holder2 = factorial(holder1)/ (factorial(holder1-altKumeEl) * factorial(altKumeEl));            
+            holder2 = factorial(holder1)/ (factorial(holder1-altKumeEl) * factorial(altKumeEl));
             let sum = subAr[l].length - holder2;
 
             for (let j = sum; j < subAr[l].length; j++) {
                 sumAr.push(subAr[0][i]+subAr[l][j])
-                
+
             }
 //#region MANUEL
     //---------------------------------------------------------------------------------
@@ -66,50 +68,50 @@ function subArray(arr) {
             sumAr.push(subAr[0][0]+subAr[0][2])
             sumAr.push(subAr[0][0]+subAr[0][3])
             sumAr.push(subAr[0][0]+subAr[0][4])
-    
+
             sumAr.push(subAr[0][1]+subAr[0][2])
             sumAr.push(subAr[0][1]+subAr[0][3])
             sumAr.push(subAr[0][1]+subAr[0][4])
-    
+
             sumAr.push(subAr[0][2]+subAr[0][3])
             sumAr.push(subAr[0][2]+subAr[0][4])
-    
+
             sumAr.push(subAr[0][3]+subAr[0][4])*/
     /*-----------------------------------------------------------*/
            /* subAr.push(sumAr);
             sumAr =[];
-    
+
     //-----------------------------------------------------
-    
+
             sumAr.push(subAr[0][0]+subAr[1][4])
             sumAr.push(subAr[0][0]+subAr[1][5])
             sumAr.push(subAr[0][0]+subAr[1][6])
             sumAr.push(subAr[0][0]+subAr[1][7])
             sumAr.push(subAr[0][0]+subAr[1][8])
             sumAr.push(subAr[0][0]+subAr[1][9])
-    
+
             sumAr.push(subAr[0][1]+subAr[1][7])
             sumAr.push(subAr[0][1]+subAr[1][8])
             sumAr.push(subAr[0][1]+subAr[1][9])
-    
+
             sumAr.push(subAr[0][2]+subAr[1][9])*/
-    
+
     /*-----------------------------------------------------------*/
        /* subAr.push(sumAr);
         sumAr =[];
-    
+
     //-----------------------------------------------------
-    
+
             sumAr.push(subAr[0][0] + subAr[2][6])
             sumAr.push(subAr[0][0] + subAr[2][7])
             sumAr.push(subAr[0][0] + subAr[2][8])
             sumAr.push(subAr[0][0] + subAr[2][9])
-    
+
             sumAr.push(subAr[0][1] + subAr[2][9])*/
     /*-----------------------------------------------------------*/
        // subAr.push(sumAr);
        // sumAr =[];
-    
+
     //-----------------------------------------------------
     //#endregion
         }
@@ -117,8 +119,8 @@ function subArray(arr) {
         sumAr =[];
         altKumeEl++;
     }
-    
-    //#region SON ALT KÜME    
+
+    //#region SON ALT KÜME
     let lastSub = "";
     for (let i = 0; i < subAr[0].length; i++) {
         lastSub = lastSub + subAr[0][i];
@@ -127,7 +129,7 @@ function subArray(arr) {
     subAr.push(sumAr);
     sumAr = [];
     //#endregion
-    
+
     return subAr;
 }
 
